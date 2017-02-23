@@ -1,13 +1,6 @@
 main.main-content {
 	display: flex;
 	flex-direction:column;
-	h1 {
-		flex:1;
-		font-size:2em;
-		font-weight:bold;
-		font-family: 'Times New Roman';
-		
-	}
 	article.cat-news {
 		margin:20px 0;
 		flex:2;

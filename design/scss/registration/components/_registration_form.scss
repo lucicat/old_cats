@@ -1,0 +1,30 @@
+form.form-registration {
+	padding-top:40px;
+	display: flex;
+	max-width:300px;
+	flex-direction:column;
+	input {
+		margin-top:3px;
+		border:1px solid #666;
+		height: 30px;
+		padding-left: 10px;
+		border-radius:10px;
+		flex:3;
+	}
+	input[type=submit] {
+		border:none;
+		background:$a-block-color-hover;
+		color:$a-block-color;
+		transition:background .5s ease;
+		cursor: pointer;
+		&:hover {
+			color:$a-block-color-hover;
+			background:$a-block-color;
+		}
+	}
+
+	label {
+		margin-top:10px;
+		flex:1;
+	}
+}
