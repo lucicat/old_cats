@@ -1,0 +1,50 @@
+footer.main-footer {
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top:1px dashed $a-block-color-hover;
+	height:120px;
+	display: flex;
+	justify-content:space-around;
+	.left-footer-block {
+		flex:9;
+	}
+	.right-footer-block {
+		flex:2;
+		flex-direction:column;
+		display: flex;
+		align-content:center;
+		.mail, .tel {
+			padding-left:45px;
+			font-weight: 600;
+			font-size: 1em;
+			position: relative;
+			color: rgb(235,141,7);
+			display: flex;
+			// align-self:center;
+			flex:1;
+			align-items:center;
+		}
+		.mail a, .tel a {
+			text-decoration: none;
+			color:inherit;
+		}
+		.mail:before, .tel:before {
+			border-radius: 30px;
+			background-color:rgba(235,141,7,.8);
+			content:'';
+			left:0px;
+			width:40px;
+			height: 40px;
+			position: absolute;
+			background-size: 70%;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+		.tel:before {
+			background-image: url('../../../images/phone-call.svg');
+		}
+		.mail:before {
+			background-image: url('../../../images/mail.svg');
+		}
+	}
+}

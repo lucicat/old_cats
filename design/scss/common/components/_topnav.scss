@@ -1,0 +1,35 @@
+nav.top-nav {
+	ul {
+		display: flex;
+		justify-content:space-between;
+		align-items:center;
+		li {
+			height:60px;
+			flex:1;
+			display: flex;
+			justify-content:center;
+			align-items:center;
+			a {
+				font-family: Arial;
+				color:$link-color;
+				text-transform: lowercase;
+				letter-spacing: .02em;
+				font-weight: 600;
+				background: $a-block-color;
+				border-radius: 60px;
+				text-decoration: none;
+				line-height:50px;
+				display: block;
+				width: 80%;
+				height:80%;
+				text-align:center;
+				transition:background .5s ease;
+				&:hover {
+					color:$a-block-color;
+					background: $a-block-color-hover;
+				}
+			}
+
+		}
+	}
+}
