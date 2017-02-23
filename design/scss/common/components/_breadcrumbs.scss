@@ -1,0 +1,30 @@
+.breadcrumbs {
+	display: inline-block;
+	padding:10px 0;
+	border-bottom:1px dashed #666;
+	border-top:1px dashed #666;
+	margin:15px 0 0 25px;
+	a {
+		color:$link-color;
+		font-size:.9em;
+		font-family: 'Times New Roman';
+		margin-right:10px;
+		position: relative;
+		&:last-child {
+			text-decoration:none;
+			color:$text-color;
+			&:after {
+				content:'';
+			}
+		}
+		&:after {
+			width:15px;
+			height: 15px;
+			content:'\02C3';
+			position: absolute;
+			font-size: 1.3em;
+			top:7px;
+			right: -15px;
+		}
+	}
+}

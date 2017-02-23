@@ -1,8 +1,10 @@
+@charset "utf-8";
 @import '../../bower_components/reset-css/reset';
 @import 'base/fonts';
 @import 'framework/global';
 @import 'base/variables';
 @import 'components/header';
+@import 'components/breadcrumbs';
 @import 'components/topnav';
 @import 'components/main';
 @import 'components/pagination';
