@@ -3,16 +3,34 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Cats Home</title>
+	<link rel="stylesheet" href="css/cats/app.css">
+	<link rel="stylesheet" href="./bower_components/jquery-ui/themes/sunny/jquery-ui.min.css">
 </head>
 <body>
 	<header class="main-header">
-		<div class="logo"></div>
-		<h1>Сайтик для котико и их любителей</h1>
-		<div class="kontakt-info">
-			<div class="mail">kitten@kitten.ru</div>
-			<div class="tel">8-999-999-9999</div>
+		<div class="logo">
+			<img src="images/40ee1abe35cc01ed7e1eae82324bdda6.png" alt="">
 		</div>
-		<div class="login-form"> <a href="#" class="login">войти</a></div>
+		<h1>Сайтик для котиков и их любителей</h1>
+		<div class="right-top-block">
+			<div class="mail">
+				<a href="mailto:kitten@kitten.ru">kitten@kitten.ru</a>
+			</div>
+			<div class="tel">
+				<a href="tel:8-999-999-9999"> 8-999-999-9999</a>
+			</div>	
+			<div class="login-form"> 
+				<a href="#" class="login">войти</a>
+				<form action="/" method="post">
+					<a href="#" class="close-login-form"></a>
+					<input type="email" name="email" placeholder="kittty@mail.kitty">
+					<input type="password" name="password" placeholder="*****">
+					<input type="submit" value="войти" name="go">
+					<a href="" class="forget-pass">забыли пароль?</a>
+					<a href="" class="registration">регистрация</a>
+				</form>
+			</div>
+		</div>
 	</header>
 	<nav class="top-nav">
 		<ul>
@@ -23,12 +41,143 @@
 			<li><a href="#">Контакты</a></li>
 		</ul>
 	</nav>
-	<main class="main-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit cum earum debitis architecto adipisci dolores facilis. Sapiente illo nobis dolores minus, tempore rem veritatis suscipit obcaecati facilis velit eveniet minima omnis sunt neque debitis ratione. Officiis magnam, quaerat incidunt perspiciatis? Ducimus maxime vitae unde cum excepturi sapiente, facilis, ut ratione optio quos enim, odit, non tempora! Amet voluptates iure facere fuga nisi, quam, reiciendis ab architecto nemo enim autem tenetur assumenda accusantium deleniti tempore obcaecati, ad aut consequuntur deserunt error accusamus mollitia ducimus! Iure, illum, beatae. Animi cumque exercitationem laudantium vel saepe voluptates, quaerat, nisi numquam aliquam id minima magni doloremque adipisci corrupti provident praesentium, a soluta. Doloremque in sint optio magnam labore perspiciatis, suscipit. Accusamus libero, minus exercitationem explicabo, nobis fugit quibusdam quod est totam illum quo deleniti. Dolore laudantium amet consequatur sed architecto voluptatibus harum debitis possimus provident, quibusdam aperiam, repellat blanditiis facilis dolorem porro consectetur earum fugiat inventore assumenda ducimus molestias quam veritatis id commodi. Debitis aliquid et nemo repellat est, deserunt aut tenetur dignissimos molestiae dolorem vel autem rem dicta, voluptate vitae error necessitatibus beatae, praesentium ipsam tempora cumque, consectetur. Asperiores enim dicta minus rem illo expedita, provident id odio cum repellendus quam ut esse error beatae repellat deleniti eius aliquam hic commodi suscipit quibusdam alias. Laboriosam illo nam dolorem dolore quis rem, velit voluptatum impedit, quisquam sequi. Possimus, dolores! Quo quod delectus ducimus, necessitatibus, consectetur asperiores adipisci eius iste fugit, dolore dolorem, doloremque facilis. Nihil saepe a praesentium deleniti eius, delectus itaque voluptate fuga minus veniam officiis magnam iste consectetur, magni, rem tenetur expedita sit ducimus laudantium facilis eveniet voluptates? Fuga doloribus ab, consequuntur alias, voluptatibus dolorum dicta et iure animi. Odio libero, maiores neque maxime dolor ullam aut voluptatum ipsa mollitia dignissimos earum quo esse perferendis, possimus eligendi consequuntur sed, modi ratione sunt alias!</main>
+	<div class="breadcrumbs">
+		<a href="">link1</a>
+		<a href="">link2</a>
+		<a href="">link3</a>
+	</div>
+	<main class="main-content">
+		<h1>Котики</h1>
+		<div class="search-cat">
+			<div class="filter">
+				<fieldset calss="name-a-sex">
+					<div class="wrap-name">
+						<label for="name">Имя:</label>
+						<input type="text" class="name" name="name" placeholder="name">
+					</div>
+					<div class="wrap-sex">
+						<label for="sex">Пол:</label>
+						<input name="sex" type="radio" value="cat">Кот
+						<input name="sex" type="radio" value="catty">Кошечка
+					</div>
+				</fieldset>
+
+				<fieldset class="age-and-weight">
+					<div class="wrap-age">
+						<label for="from_age">От:</label>
+						<input type="text" size="5" name="from_age" placeholder="от" id="from_age">
+						<label for="to_age">До:</label>
+						<input type="text" size="5" name="to_age" placeholder="до">лет
+					</div>
+
+					<div class="weight-cat">
+						Вес:
+						<div class="polzunok"></div>
+					</div>
+				</fieldset>
+
+				<fieldset class="breed-fieldset">
+					<div class="wrap-breed">
+						<label for="breed-cat">Порода</label>
+						<select name="breed-cat" id="" class="breed-cat">
+							<option value="samar">Самарские</option>
+							<option value="siam">Сиамские</option>
+						</select>
+					</div>
+
+					<input type="submit" class="button-search-cat" value="Искать котика">
+				</fieldset>
+
+			</div>
+		</div>
+		<div class="list-cats">
+			<article class="cat">
+				<div class="img-cat">
+					<img src="http://www.lorempixel.com/200/200/cats" alt="">
+				</div>
+				<div class="data-cat">
+					<div class="name-cat__data">Мурзик</div>
+					<div class="sex_cat__data">Кот</div>
+					<div class="year_cat__data">15 лет</div>
+					<div class="weight_cat__data">1.5 кг</div>
+					<div class="breed-cat__data">Симаский</div>
+					<a href="" class="full-cat-link">на страницу этого котика</a>
+				</div>
+			</article>
+			<article class="cat">
+				<div class="img-cat">
+					<img src="http://www.lorempixel.com/200/200/cats" alt="">
+				</div>
+				<div class="data-cat">
+					<div class="name-cat__data">Мурзик</div>
+					<div class="sex_cat__data">Кот</div>
+					<div class="year_cat__data">15 лет</div>
+					<div class="weight_cat__data">1.5 кг</div>
+					<div class="breed-cat__data">Симаский</div>
+					<a href="" class="full-cat-link">на страницу этого котика</a>
+				</div>
+			</article>
+			<article class="cat">
+				<div class="img-cat">
+					<img src="http://www.lorempixel.com/200/200/cats" alt="">
+				</div>
+				<div class="data-cat">
+					<div class="name-cat__data">Мурзик</div>
+					<div class="sex_cat__data">Кот</div>
+					<div class="year_cat__data">15 лет</div>
+					<div class="weight_cat__data">1.5 кг</div>
+					<div class="breed-cat__data">Симаский</div>
+					<a href="" class="full-cat-link">на страницу этого котика</a>
+				</div>
+			</article>
+			<article class="cat">
+				<div class="img-cat">
+					<img src="http://www.lorempixel.com/200/200/cats" alt="">
+				</div>
+				<div class="data-cat">
+					<div class="name-cat__data">Мурзик</div>
+					<div class="sex_cat__data">Кот</div>
+					<div class="year_cat__data">15 лет</div>
+					<div class="weight_cat__data">1.5 кг</div>
+					<div class="breed-cat__data">Симаский</div>
+					<a href="" class="full-cat-link">на страницу этого котика</a>
+				</div>
+			</article>
+			<article class="cat">
+				<div class="img-cat">
+					<img src="http://www.lorempixel.com/200/200/cats" alt="">
+				</div>
+				<div class="data-cat">
+					<div class="name-cat__data">Мурзик</div>
+					<div class="sex_cat__data">Кот</div>
+					<div class="year_cat__data">15 лет</div>
+					<div class="weight_cat__data">1.5 кг</div>
+					<div class="breed-cat__data">Симаский</div>
+					<a href="" class="full-cat-link">на страницу этого котика</a>
+				</div>
+			</article>
+			
+		</div>
+		<div class="pagination">
+			<a href="" class="pagination-item">1</a>
+			<a href="" class="pagination-item">2</a>
+			<a href="" class="pagination-item">3</a>
+			<a href="" class="pagination-item">4</a>
+			<a href="" class="pagination-item">5</a>
+			<a href="" class="pagination-item">6</a>
+		</div>
+	</main>
 	<footer class="main-footer">
-		<div class="kontakt-info">
-			<div class="mail">kitten@kitten.ru</div>
-			<div class="tel">8-999-999-9999</div>
+		<div class="left-footer-block">
+			Котики 2017
+		</div>
+		<div class="right-footer-block">
+			<div class="mail"><a href="mailto:kitten@kitten.ru">kitten@kitten.ru</a></div>
+			<div class="tel"><a href="tel:8-999-999-9999"> 8-999-999-9999</a></div>
 		</div>
 	</footer>
+	<script src="./bower_components/jquery/dist/jquery.min.js" defer></script>
+	<script src="./bower_components/jquery-ui/jquery-ui.js"  defer></script>
+	<script src="js/js.js" defer></script>
 </body>
 </html>
