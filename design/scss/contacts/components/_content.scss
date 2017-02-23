@@ -1,0 +1,50 @@
+main.main-content {
+	h1 {
+		margin-bottom:10px;
+	}
+	.maps-coord {
+		margin:10px 0px;
+	}
+	.number-phone, .email-addres {
+		font-family: 'Times New Roman';
+		font-weight: bold;
+		font-style: italic;
+		color:#666;
+		margin:5px 0;
+	}
+	form{
+		display: flex;
+		flex-direction:column;
+		label {
+			margin-top:10px;
+		}
+		input {
+			border:1px solid #666;
+			border-radius:10px;
+			max-width:250px;
+			flex-shrink:1;
+			flex:1;
+		}
+		input[type=submit] {
+			max-width:250px;
+			cursor:pointer;
+			transition: background .7s ease;
+			background: $a-block-color-hover;
+			color: $a-block-color;
+			border:none;
+			height: 40px;
+			width:150px;
+			margin-top:10px;
+			&:hover {
+				background: $a-block-color;
+				color: $a-block-color-hover;
+				border:1px solid $a-block-color-hover;
+			}
+		}
+		textarea {
+			max-width:400px;
+			border-radius:10px;
+		}
+	}
+
+}
