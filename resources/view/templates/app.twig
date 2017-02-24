@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home Controller</title>
+	<script src="{{ base_url() }}/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="{{ base_url() }}/js/script.js"></script>
+	<link rel="stylesheet" href="{{ base_url() }}/vendor/pure/pure-min.css">
+	<link rel="stylesheet" href="{{ base_url() }}/css/css.css" type="text/css">
+</head>
+<body>
+	<div class="container">
+		{% include 'templates/partials/navigation.twig' %}
+		{% block content %}{% endblock %}
+		
+	</div>
+</body>
+</html>
