@@ -10,10 +10,21 @@
 	class AuthController extends Controller 
 	{
 
+		public function postSignIn($request, $response)
+		{
+			
+		}
+
+
+
+
 		public function getSignUp($request, $response) 
 		{
 			return $this->view->render($response, 'auth/signup.twig');
 		}
+
+
+
 
 		/**
 		 * Register user and redirect at home page..
@@ -24,7 +35,7 @@
 		public function postSignUp($request, $response) 
 		{
 			$validation = $this->validator->validate($request, [
-				'email' 		=> v::noWhitespace()->notEmpty(),
+				'email' 		=> v::noWhitespace()->notEmpty()->email()->emailAvailable(),
 				'namecat' 	=> v::noWhitespace()->notEmpty()->alpha(), 
 				'password' 	=> v::noWhitespace()->notEmpty(),
 				'passwordagain' => v::noWhitespace()->notEmpty(),

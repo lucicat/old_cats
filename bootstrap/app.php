@@ -1,4 +1,5 @@
 <?php
+	use Respect\Validation\Validator as v;
 	session_start();
 	
 	// include configuration file..
@@ -46,6 +47,10 @@
 
 	$app->add(new \App\Middleware\ValidationMiddleware($container));
 	$app->add(new \App\Middleware\OldInputMiddleware($container));
+
+	v::with('App\\Validation\\Rules\\');
+
+
 
 	// set HomeController 
 	$container['HomeController'] = function ($container) {
