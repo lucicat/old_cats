@@ -1,21 +1,35 @@
 {% extends '/templates/app.twig' %}
 
 {% block content %}
-	<form action="{{ path_for('auth.signup') }}" class="pure-form pure-form-stacked" method="post" autocomplete="off">
+		<form action="{{ path_for('auth.signup') }}" method="post" class="form-registration" autocomplete="off">
+			<label for="email">Емэйл:</label>
+			<input type="email" name="email" required id="email" placeholder="youremail@ya.ru">
+			
+			<label for="namecat">Имя котика:</label>
+			<input type="text" name="namecat" required id="namecat" placeholder="Pretty Kitty">
 
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" placeholder="email@email.com">
-				
-				<label for="name">Name:</label>
-				<input type="text" id="name" name="name" placeholder="Your name">
+			<label for="weight">Вес котика(кг):</label>
+			<input type="text" name="weight" required id="weight" placeholder="1,5">
+
+			<label for="sex">Пол:</label>
+			<select name="sex" id="sex">
+				<option value="1" name='cat'>Кот</option>
+				<option value="0" name='catty'>Кошечка</option>
+			</select>			
 	
-				<label for="last_name">Last name:</label>
-				<input type="text" id="last_name" name="last_name" placeholder="Your last name">
+			<label for="years">Возраст котика:</label>
+			<input type="text" name="years" required id="years" placeholder="3">
 
-				<label for="password">Password:</label>
-				<input type="password" id="password" name="password" placeholder="password">
+			<label for="breed">Порода:</label>
+			<select name="breed" id="breed">
+				<option value="Krasno">Сиамский</option>
+				<option value="Siam">Краснозернский</option>
+			</select>
 
-				<input class="pure-botton pure-botton-primary" type="submit" value="Sign up">
-		
+			<label for="password">Пароль:</label>
+			<input type="password" required name="password" placeholder="*****">
+			<label for="passwordagain">Пароль еще раз:</label>
+			<input type="password" required name="passwordagain" id="passwordagain" placeholder="*****">
+			<input type="submit" name="go_reg" value="Зарегистрироваться">
 		</form>
 {% endblock %}
