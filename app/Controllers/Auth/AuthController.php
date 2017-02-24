@@ -25,9 +25,12 @@
 		{
 
 			$user = UserModel::create([
-				'name' 			=> $request->getParam('name'),
-				'last_name' => $request->getParam('last_name'),
 				'email' 		=> $request->getParam('email'),
+				'name' 			=> $request->getParam('namecat'),
+				'weight'		=> $request->getParam('weight'),
+				'sex' 			=> $request->getParam('sex'),
+				'breed'			=> $request->getParam('breed'),
+				'years'			=> $request->getParam('years'),
 				'password' 	=> password_hash($request->getParam('password'), PASSWORD_DEFAULT),
 			]);
 

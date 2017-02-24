@@ -11,13 +11,13 @@ class UserModel extends Model
 		 * identification table in MySQL 
 		 * @var string
 		 */
-		protected $table = 'users';
+		protected $table = 'cats';
 
 		/**
 		 * Indicates if need use timestamps
 		 * @var boolean
 		 */
-		public $timestamps = false;
+		public $timestamps = true;
 
 		/**
 		 * connection name for the model 
@@ -31,8 +31,12 @@ class UserModel extends Model
 		 */
 		protected $fillable = [
 			'name',
-			'lastname',
-			'email',
+			'sex',
+			'years',
 			'password',
+			'breed',
+			'aboutme',
+			'email',
+			'weight'
 		];
 }

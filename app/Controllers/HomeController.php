@@ -17,7 +17,9 @@
 		 **/
 		public function sayHello($request, $response) 
 		{
-			$home_page_data = HomeModel::find(1);
+			$home_page_data = UserModel::where('email', 'kitt@er.ru')->first();
+			print_r(var_dump($home_page_data->name));
+			die();
 			return $this->view->render( $response, 'homepage.twig');
 		}
 	}
