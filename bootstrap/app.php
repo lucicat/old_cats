@@ -29,6 +29,7 @@
 		return new App\Validation\Validator;
 	};
 	
+	
 	// injection twig template manager 
 	$container['view'] = function ($container) {
 		$view = new \Slim\Views\Twig(realpath('../resources/view/'), [
@@ -42,6 +43,7 @@
 
 		return $view;
 	};
+	$app->add(new \App\Middleware\ValidationMiddleware($container));
 
 	// set HomeController 
 	$container['HomeController'] = function ($container) {

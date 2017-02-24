@@ -2,34 +2,64 @@
 
 {% block content %}
 		<form action="{{ path_for('auth.signup') }}" method="post" class="form-registration" autocomplete="off">
+
 			<label for="email">Емэйл:</label>
 			<input type="email" name="email"  id="email" placeholder="youremail@ya.ru">
-			
+			{% if errors.email %}
+				<div style="border:1px solid red; color: red;">{{ errors.email[0] }}</div>
+			{% endif %}
+
+
 			<label for="namecat">Имя котика:</label>
 			<input type="text" name="namecat" required id="namecat" placeholder="Pretty Kitty">
+			{% if errors.name %}
+				<div style="border:1px solid red; color: red;">{{ errors.name[0] }}</div>
+			{% endif %}
 
 			<label for="weight">Вес котика(кг):</label>
 			<input type="text" name="weight" required id="weight" placeholder="1,5">
+			{% if errors.weight %}
+				<div style="border:1px solid red; color: red;">{{ errors.weight[0] }}</div>
+			{% endif %}
 
 			<label for="sex">Пол:</label>
 			<select name="sex" id="sex">
 				<option value="1" name='cat'>Кот</option>
 				<option value="0" name='catty'>Кошечка</option>
 			</select>			
+			{% if errors.sex %}
+				<div style="border:1px solid red; color: red;">{{ errors.sex[0] }}</div>
+			{% endif %}
 	
 			<label for="years">Возраст котика:</label>
 			<input type="text" name="years" required id="years" placeholder="3">
+			{% if errors.years %}
+				<div style="border:1px solid red; color: red;">{{ errors.years[0] }}</div>
+			{% endif %}
+
 
 			<label for="breed">Порода:</label>
 			<select name="breed" id="breed">
 				<option value="Krasno">Сиамский</option>
 				<option value="Siam">Краснозернский</option>
 			</select>
+			{% if errors.breed %}
+				<div style="border:1px solid red; color: red;">{{ errors.breed[0] }}</div>
+			{% endif %}
+
 
 			<label for="password">Пароль:</label>
 			<input type="password" required name="password" placeholder="*****">
+			{% if errors.password %}
+				<div style="border:1px solid red; color: red;">{{ errors.password[0] }}</div>
+			{% endif %}
+
 			<label for="passwordagain">Пароль еще раз:</label>
 			<input type="password" required name="passwordagain" id="passwordagain" placeholder="*****">
+			{% if errors.passwordagain %}
+				<div style="border:1px solid red; color: red;">{{ errors.passwordagain[0] }}</div>
+			{% endif %}
+
 			<input type="submit" name="go_reg" value="Зарегистрироваться">
 		</form>
 {% endblock %}
