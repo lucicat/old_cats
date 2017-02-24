@@ -43,7 +43,9 @@
 
 		return $view;
 	};
+
 	$app->add(new \App\Middleware\ValidationMiddleware($container));
+	$app->add(new \App\Middleware\OldInputMiddleware($container));
 
 	// set HomeController 
 	$container['HomeController'] = function ($container) {

@@ -4,20 +4,20 @@
 		<form action="{{ path_for('auth.signup') }}" method="post" class="form-registration" autocomplete="off">
 
 			<label for="email">Емэйл:</label>
-			<input type="email" name="email"  id="email" placeholder="youremail@ya.ru">
+			<input type="email" value="{{ old.email }}" name="email"  id="email" placeholder="youremail@ya.ru">
 			{% if errors.email %}
 				<div style="border:1px solid red; color: red;">{{ errors.email[0] }}</div>
 			{% endif %}
 
 
 			<label for="namecat">Имя котика:</label>
-			<input type="text" name="namecat" required id="namecat" placeholder="Pretty Kitty">
+			<input type="text" value="{{ old.namecat }}" name="namecat" required id="namecat" placeholder="Pretty Kitty">
 			{% if errors.name %}
 				<div style="border:1px solid red; color: red;">{{ errors.name[0] }}</div>
 			{% endif %}
 
 			<label for="weight">Вес котика(кг):</label>
-			<input type="text" name="weight" required id="weight" placeholder="1,5">
+			<input type="text" name="weight" value="{{ old.weight }}" required id="weight" placeholder="1,5">
 			{% if errors.weight %}
 				<div style="border:1px solid red; color: red;">{{ errors.weight[0] }}</div>
 			{% endif %}
@@ -32,7 +32,7 @@
 			{% endif %}
 	
 			<label for="years">Возраст котика:</label>
-			<input type="text" name="years" required id="years" placeholder="3">
+			<input type="text" name="years" required id="years" value="{{ old.years }}" placeholder="3">
 			{% if errors.years %}
 				<div style="border:1px solid red; color: red;">{{ errors.years[0] }}</div>
 			{% endif %}
