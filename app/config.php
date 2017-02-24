@@ -4,7 +4,7 @@
 			'displayErrorDetails' => true,
 			'db' => [
 				'driver' 		=> 'mysql',
-				'database' 	=> 'myslim',
+				'database' 	=> 'cats',
 				'username' 	=> 'root',
 				'password'	=> '12rrrrrr',
 				'charset'		=> 'utf8',
