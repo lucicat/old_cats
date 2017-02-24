@@ -21,7 +21,7 @@
 			{% if auth.check %}
 				<div class="login-form"> 
 					<a href="{{ path_for('auth.signout') }}" class="logout">выйти</a>
-					<a href="#" class="cat-profile">профиль</a>
+					<a href="{{ path_for('profile.show') }}" class="cat-profile">профиль</a>
 				</div>
 			{% else %}
 				<div class="login-form"> 
@@ -41,11 +41,11 @@
 	</header>
 	<nav class="top-nav">
 		<ul>
-			<li><a href="#">Главная</a></li>
-			<li><a href="#">Новости</a></li>
-			<li><a href="#">Котики</a></li>
-			<li><a href="#">Обсуждения</a></li>
-			<li><a href="#">Контакты</a></li>
+			<li><a href="/public">Главная</a></li>
+			<li><a href="/public/news">Новости</a></li>
+			<li><a href="/public/cats">Котики</a></li>
+			<li><a href="/public/discussion">Обсуждения</a></li>
+			<li><a href="/public/contacts">Контакты</a></li>
 		</ul>
 	</nav>
 	<div class="breadcrumbs">

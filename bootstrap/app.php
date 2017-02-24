@@ -70,6 +70,11 @@
 		return new App\Controllers\Auth\AuthController($container);
 	};
 
+	// set ProfileController
+	$container['ProfileController'] = function ($container) {
+		return new App\Controllers\Profile\ProfileController($container);
+	};
+
 	// initialize our application
 	$app->run();
 
