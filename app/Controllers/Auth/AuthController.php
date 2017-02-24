@@ -12,7 +12,16 @@
 
 		public function postSignIn($request, $response)
 		{
+			$auth = $this->auth->attempt(
+				$request->getParam('email'),
+				$request->getParam('password')
+			);
+
+			if (!$auth) {
+				return $response->withRedirect($this->router->pathFor('auth.signup'));
+			}
 			
+			return $response->withRedirect($this->router->pathFor('home'));
 		}
 
 
@@ -23,6 +32,15 @@
 			return $this->view->render($response, 'auth/signup.twig');
 		}
 
+		public function getSignOut($request, $response)
+		{
+			if ($this->auth->check()) {
+				$this->auth->signout();
+				return $response->withRedirect($this->router->pathFor('home'));
+			} else {
+				return $response->withRedirect($this->router->pathFor('home'));
+			}
+		}
 
 
 
@@ -58,6 +76,8 @@
 				'years'			=> $request->getParam('years'),
 				'password' 	=> password_hash($request->getParam('password'), PASSWORD_DEFAULT),
 			]);
+
+			$this->postSignIn($request, $response);
 
 			return $response->withRedirect($this->router->pathFor('home'));
 		}

@@ -30,6 +30,10 @@
 		return new App\Validation\Validator;
 	};
 	
+
+	$container['auth'] = function ($container) {
+		return new \App\Auth\Auth;
+	};
 	
 	// injection twig template manager 
 	$container['view'] = function ($container) {
@@ -42,9 +46,13 @@
 			$container->request->getUri()
 		));
 
+		$view->getEnvironment()->addGlobal('auth', [
+			'check' => $container->auth->check(),
+			'user' => $container->auth->user()
+		]);
+
 		return $view;
 	};
-
 	$app->add(new \App\Middleware\ValidationMiddleware($container));
 	$app->add(new \App\Middleware\OldInputMiddleware($container));
 

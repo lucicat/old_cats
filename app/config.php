@@ -1,6 +1,7 @@
 <?php
 	$config = [
 		'settings' => [
+			// 'determineRouteBeforeAppMiddleware' => true,
 			'displayErrorDetails' => true,
 			'db' => [
 				'driver' 		=> 'mysql',
