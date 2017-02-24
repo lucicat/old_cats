@@ -3,12 +3,12 @@
 
 	use App\Controllers\Controller;
 	use App\Models\UserModel;
+	use Respect\Validation\Validator as v;
 	/*
 	 * User autorized  
 	 */
 	class AuthController extends Controller 
 	{
-
 
 		public function getSignUp($request, $response) 
 		{
@@ -23,6 +23,20 @@
 		 */
 		public function postSignUp($request, $response) 
 		{
+			$validation = $this->validator->validate($request, [
+				'email' 		=> v::noWhitespace()->notEmpty(),
+				'namecat' 	=> v::noWhitespace()->notEmpty()->alpha(), 
+				'password' 	=> v::noWhitespace()->notEmpty(),
+				'passwordagain' => v::noWhitespace()->notEmpty(),
+				'weight'		=> v::noWhitespace()->notEmpty(),
+				'sex'				=> v::noWhitespace()->notEmpty(),
+				'breed'			=> v::noWhitespace()->notEmpty(),
+				'years'			=> v::noWhitespace()->notEmpty(),
+			]);
+
+			if ($validation->failed()) {
+				return $response->withRedirect($this->router->pathFor('auth.signup'));
+			}
 
 			$user = UserModel::create([
 				'email' 		=> $request->getParam('email'),
