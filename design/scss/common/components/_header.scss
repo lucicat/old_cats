@@ -84,7 +84,7 @@ header {
 			align-items:center;
 			justify-content:left;
 			flex:1;
-			& > a {
+			.login, .logout, .cat-profile{
 				box-shadow: 1px 1px 2px rgba(0,0,0,.5);
 				padding-left:20px;
 				line-height: 35px;
@@ -100,16 +100,31 @@ header {
 				text-indent: -9999px;
 				position: relative;
 			}
-			& > a:after {
+			.cat-profile {
+				margin-left:15px;
+			}
+			.login:after, .logout:after, .cat-profile:after {
 				content: '';
 				width:24px;
 				height: 24px;
-				background:url('/design/images/1487802445_key.svg');
 				position: absolute;
 				right: 7px;
 				top: 8px;
 			}
-			& > a:hover {
+			.logout:after {
+				background:url('/design/images/logout.svg');
+			}
+			.login:after {
+				background:url('/design/images/1487802445_key.svg');
+			}
+			.cat-profile:after {
+				background:url('/design/images/cat.svg');
+			}
+			.cat-profile:hover {
+				animation: showLoginProfile .5s ease .3s normal 1;
+				animation-fill-mode:forwards;
+			}
+			.login:hover, .logout:hover{
 				animation: showLogin .5s ease .3s normal 1;
 				animation-fill-mode:forwards;
 			}
@@ -177,5 +192,14 @@ header {
 	to {
 		text-indent:0;
 		width:100px;
+	}
+}
+@keyframes showLoginProfile {
+	from {
+		width:40px;
+	}
+	to {
+		text-indent:0;
+		width:120px;
 	}
 }

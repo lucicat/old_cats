@@ -19,6 +19,10 @@
 				<a href="tel:8-999-999-9999"> 8-999-999-9999</a>
 			</div>	
 			{% if auth.check %}
+				<div class="login-form"> 
+					<a href="{{ path_for('auth.signout') }}" class="logout">выйти</a>
+					<a href="#" class="cat-profile">профиль</a>
+				</div>
 			{% else %}
 				<div class="login-form"> 
 					<a href="#" class="login">войти</a>
@@ -28,7 +32,7 @@
 						<input type="password" name="password" placeholder="*****">
 						<input type="submit" value="войти" name="go">
 						<a href="" class="forget-pass">забыли пароль?</a>
-						<a href="" class="registration">регистрация</a>
+						<a href="{{ path_for('auth.signup') }}" class="registration">регистрация</a>
 					</form>
 				</div>
 			{% endif %}
