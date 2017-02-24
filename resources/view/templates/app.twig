@@ -1,39 +1,14 @@
-{# <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Home Controller</title>
-	<script src="{{ base_url() }}/vendor/jquery/dist/jquery.min.js"></script>
-	<script src="{{ base_url() }}/js/script.js"></script>
-	<link rel="stylesheet" href="{{ base_url() }}/vendor/pure/pure-min.css">
-	<link rel="stylesheet" href="{{ base_url() }}/css/css.css" type="text/css">
-</head>
-<body>
-	<div class="container">
-		{% include 'templates/partials/navigation.twig' %}
-		
-	</div>
-</body>
-</html>
- #}
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>title</title>
-	{# generate some css #}
-{# 	<link rel="stylesheet" href="css/cats/app.css">
-	<link rel="stylesheet" href="./bower_components/jquery-ui/themes/sunny/jquery-ui.min.css">
- #}
+	<link rel="stylesheet" href="/design/css/common/app.css">
+	{% block header %}{% endblock %}
 </head>
 <body>
 	<header class="main-header">
 		<div class="logo">
-			<img src="images/40ee1abe35cc01ed7e1eae82324bdda6.png" alt="">
+			<img src="/design/images/40ee1abe35cc01ed7e1eae82324bdda6.png" height="1024" width="890" alt="">
 		</div>
 		<h1>Сайтик для котиков и их любителей</h1>
 		<div class="right-top-block">
@@ -43,17 +18,20 @@
 			<div class="tel">
 				<a href="tel:8-999-999-9999"> 8-999-999-9999</a>
 			</div>	
-			<div class="login-form"> 
-				<a href="#" class="login">войти</a>
-				<form action="/" method="post">
-					<a href="#" class="close-login-form"></a>
-					<input type="email" name="email" placeholder="kittty@mail.kitty">
-					<input type="password" name="password" placeholder="*****">
-					<input type="submit" value="войти" name="go">
-					<a href="" class="forget-pass">забыли пароль?</a>
-					<a href="" class="registration">регистрация</a>
-				</form>
-			</div>
+			{% if auth.check %}
+			{% else %}
+				<div class="login-form"> 
+					<a href="#" class="login">войти</a>
+					<form action="{{ path_for('auth.signin')}}" method="post">
+						<a href="#" class="close-login-form"></a>
+						<input type="email" name="email" placeholder="kittty@mail.kitty">
+						<input type="password" name="password" placeholder="*****">
+						<input type="submit" value="войти" name="go">
+						<a href="" class="forget-pass">забыли пароль?</a>
+						<a href="" class="registration">регистрация</a>
+					</form>
+				</div>
+			{% endif %}
 		</div>
 		{# end right-top-block #}
 	</header>
@@ -72,7 +50,7 @@
 		<a href="">link3</a>
 	</div>
 	<main class="main-content">
-		<h1>Content Title</h1>
+		<h1>{% block h1 %}{% endblock %}</h1>
 		{% block content %}{% endblock %}
 
 	</main>
@@ -86,11 +64,6 @@
 			<div class="tel"><a href="tel:8-999-999-9999"> 8-999-999-9999</a></div>
 		</div>
 	</footer>
-	{# generate some script #}
-	{# 
-	<script src="./bower_components/jquery/dist/jquery.min.js" defer></script>
-	<script src="./bower_components/jquery-ui/jquery-ui.js"  defer></script>
-	<script src="js/js.js" defer></script>
-	 #}
+	{% block script %}{% endblock %}
 </body>
 </html>

@@ -69,10 +69,10 @@ header {
 			background-repeat: no-repeat;
 		}
 		.tel:before {
-			background-image: url('../../../images/phone-call.svg');
+			background-image: url('/design/images/phone-call.svg');
 		}
 		.mail:before {
-			background-image: url('../../../images/mail.svg');
+			background-image: url('/design/images/mail.svg');
 		}
 		.mail a, .tel a {
 			text-decoration: none;
@@ -84,6 +84,35 @@ header {
 			align-items:center;
 			justify-content:left;
 			flex:1;
+			& > a {
+				box-shadow: 1px 1px 2px rgba(0,0,0,.5);
+				padding-left:20px;
+				line-height: 35px;
+				transition: width .5s ease;
+				background: white;
+				display: block;
+				text-decoration: none;
+				color:black;
+				border-radius:30px;
+				height:40px;
+				width:40px;
+				overflow: hidden;
+				text-indent: -9999px;
+				position: relative;
+			}
+			& > a:after {
+				content: '';
+				width:24px;
+				height: 24px;
+				background:url('/design/images/1487802445_key.svg');
+				position: absolute;
+				right: 7px;
+				top: 8px;
+			}
+			& > a:hover {
+				animation: showLogin .5s ease .3s normal 1;
+				animation-fill-mode:forwards;
+			}
 			form {
 			  box-shadow: 4px 4px 1px rgba(0,0,0,.3);
 				display: flex;
@@ -101,7 +130,7 @@ header {
 				.close-login-form {
 					width:20px;
 					height: 20px;
-					background-image: url('../../../images/cancel.svg');
+					background-image: url('/design/images/cancel.svg');
 					position: absolute;
 					background-size: 80%;
 					background-position: center center;
@@ -136,35 +165,6 @@ header {
 					flex-basis:auto;
 					flex:2;
 				}
-			}
-			& > a {
-				box-shadow: 1px 1px 2px rgba(0,0,0,.5);
-				padding-left:20px;
-				line-height: 35px;
-				transition: width .5s ease;
-				background: white;
-				display: block;
-				text-decoration: none;
-				color:black;
-				border-radius:30px;
-				height:40px;
-				width:40px;
-				overflow: hidden;
-				text-indent: -9999px;
-				position: relative;
-			}
-			& > a:after {
-				content: '';
-				width:24px;
-				height: 24px;
-				background:url('../../../images/1487802445_key.svg');
-				position: absolute;
-				right: 7px;
-				top: 8px;
-			}
-			& > a:hover {
-				animation: showLogin .5s ease .3s normal 1;
-				animation-fill-mode:forwards;
 			}
 		}
 	}

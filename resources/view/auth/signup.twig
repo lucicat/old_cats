@@ -1,5 +1,14 @@
 {% extends '/templates/app.twig' %}
 
+{% block header %}
+	<title>Регистрация</title>
+	<link rel="stylesheet" type="text/css" href="/design/css/registration/app.css">
+{% endblock %}
+
+{% block h1 %}
+ Регистрация
+{% endblock %}
+
 {% block content %}
 		<form action="{{ path_for('auth.signup') }}" method="post" class="form-registration" autocomplete="off">
 
@@ -63,3 +72,8 @@
 			<input type="submit" name="go_reg" value="Зарегистрироваться">
 		</form>
 {% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
