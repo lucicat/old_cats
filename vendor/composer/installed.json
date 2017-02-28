@@ -1159,5 +1159,133 @@
             "twig",
             "view"
         ]
+    },
+    {
+        "name": "nette/utils",
+        "version": "v2.4.4",
+        "version_normalized": "2.4.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nette/utils.git",
+            "reference": "714afb64d0da07d0da7178cbf5680008e4b0180b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nette/utils/zipball/714afb64d0da07d0da7178cbf5680008e4b0180b",
+            "reference": "714afb64d0da07d0da7178cbf5680008e4b0180b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6.0"
+        },
+        "conflict": {
+            "nette/nette": "<2.2"
+        },
+        "require-dev": {
+            "nette/tester": "~2.0",
+            "tracy/tracy": "^2.3"
+        },
+        "suggest": {
+            "ext-gd": "to use Image",
+            "ext-iconv": "to use Strings::webalize() and toAscii()",
+            "ext-intl": "for script transliteration in Strings::webalize() and toAscii()",
+            "ext-json": "to use Nette\\Utils\\Json",
+            "ext-mbstring": "to use Strings::lower() etc...",
+            "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+        },
+        "time": "2017-01-16 12:30:14",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "David Grudl",
+                "homepage": "https://davidgrudl.com"
+            },
+            {
+                "name": "Nette Community",
+                "homepage": "https://nette.org/contributors"
+            }
+        ],
+        "description": "Nette Utility Classes",
+        "homepage": "https://nette.org"
+    },
+    {
+        "name": "nette/mail",
+        "version": "v2.4.2",
+        "version_normalized": "2.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nette/mail.git",
+            "reference": "2bb0333200dbec22b0c1868d907e3e451b555665"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nette/mail/zipball/2bb0333200dbec22b0c1868d907e3e451b555665",
+            "reference": "2bb0333200dbec22b0c1868d907e3e451b555665",
+            "shasum": ""
+        },
+        "require": {
+            "ext-iconv": "*",
+            "nette/utils": "^2.4 || ~3.0.0",
+            "php": ">=5.6.0"
+        },
+        "conflict": {
+            "nette/nette": "<2.2"
+        },
+        "require-dev": {
+            "nette/di": "^2.4 || ~3.0.0",
+            "nette/tester": "^2.0",
+            "tracy/tracy": "^2.4"
+        },
+        "suggest": {
+            "ext-fileinfo": "to detect type of attached files"
+        },
+        "time": "2017-01-27 12:43:33",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause",
+            "GPL-2.0",
+            "GPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "David Grudl",
+                "homepage": "https://davidgrudl.com"
+            },
+            {
+                "name": "Nette Community",
+                "homepage": "https://nette.org/contributors"
+            }
+        ],
+        "description": "Nette Mail: Sending E-mails",
+        "homepage": "https://nette.org"
     }
 ]
