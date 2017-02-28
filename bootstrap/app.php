@@ -8,9 +8,7 @@
 	// load our Slim\App in $app
 	$app = new \Slim\App($config);
 
-	// get routes
-	require '../app/routes.php';
-
+	
 	// get container, where will be save our modyles
 	$container = $app->getContainer();
 
@@ -26,8 +24,14 @@
 		return $capsule;
 	};
 
+	// set validator controller
 	$container['validator'] = function ($container) {
 		return new App\Validation\Validator;
+	};
+
+	// set pagination class 
+	$container['pagination'] = function ($container) {
+		return new App\Pagination\Pagination;
 	};
 	
 
@@ -55,10 +59,16 @@
 	};
 	$app->add(new \App\Middleware\ValidationMiddleware($container));
 	$app->add(new \App\Middleware\OldInputMiddleware($container));
-
 	v::with('App\\Validation\\Rules\\');
 
 
+	$container['CatsController'] = function ($container) {
+		return new App\Controllers\CatsController($container);
+	};	
+
+	$container['ProfileController'] = function ($container) {
+		return new App\Controllers\Profile\ProfileController($container);
+	};
 
 	// set HomeController 
 	$container['HomeController'] = function ($container) {
@@ -70,10 +80,8 @@
 		return new App\Controllers\Auth\AuthController($container);
 	};
 
-	// set ProfileController
-	$container['ProfileController'] = function ($container) {
-		return new App\Controllers\Profile\ProfileController($container);
-	};
+	// get routes
+	require '../app/routes.php';
 
 	// initialize our application
 	$app->run();

@@ -3,52 +3,53 @@
 namespace App\Controllers\Profile;
 use App\Controllers\Controller;
 use App\Models\StoriesModel;
+use App\Controllers\Pagination; 
 /**
 * 
 */
 class StoriesController extends Controller
 {
 
-	protected function getStory($id_story=null, $cat=null)
-	{
-		// if our profile, than $cat are we
-		$cat = !$cat ? $_SESSION['user'] : $cat;
-
-		// get with id_story
-		if ($id_story) {
-			$story = StoriesModel::where('id_cat', $cat)
-													 ->where('idstories', $id_story)->first();
-			return $story ? $story : false;
-		} else {
-			$story = StoriesModel::where('id_cat', $cat)->first();
-			return $story ? $story : false;
-		}
-	}
+    protected function getStory($cat=null)
+    {
+        // if our profile, than $cat are we
+        $cat = $cat === null ? $_SESSION['user'] : $cat;
+        $skip = $this->pagination->getSkip();
+        $take = $this->pagination->getTake(); 
+        
+        $story = StoriesModel::where('id_cat', $cat)
+                             ->skip($skip)
+                             ->take($take)
+                             ->first();
+        return $story ? $story : false;
+    }
 
 
-	protected function countStory($cat)
-	{
-		// if our profile, than $cat are we
-		$cat = !$cat ? $_SESSION['user'] : $cat;
+    /**
+    * get view environment for subsequent binding
+    * get story 
+    * get count stories 
+    * @param  [type] $id_story [description]
+    * @param  [type] $cat      [description]
+    * @return [type]           [description]
+    */
+    function getCatStory($cat = null)
+    {
+        $this->environment = $this->view->getEnvironment();
+        $this->countStory($cat);
+        $this->story = $this->getStory($cat);
+    }
 
-		$count = StoriesModel::where('id_cat', $cat)->count();
-		return $count ? $count : false;
-	}
 
-	protected function paginationStory($count, $current, $environment)
-	{
-		$environment->addGlobal('right', ($current + 1) <= $count);
-		$environment->addGlobal('left', ($current - 1) >= 1);
-		return true;
-	}
+     protected function countStory($cat)
+     {
+     // if our profile, than $cat are we
+        $cat = !$cat ? $_SESSION['user'] : $cat;
+
+        $count = StoriesModel::where('id_cat', $cat)->count();
+        $this->pagination->setCountElements($count);
+        return $count ? $count : false;
+    }
+  
+    // profile/2/1/(addstory/|delstory/|editstory)/(edituser)
 }
-	
-	// profile/2/1/(addstory/|delstory/|editstory)/(edituser)
-		// true если нет значения - выдать первую историю 
-	// true записать полученное значение
-	// true посчитать истории
-		// true если нет, то ничего не возвращать
-	// получить запрошенную историю 
-	// если нет запрошенной, то выдать первую
-	// проверить, есть ли следующая и предыдущая история 
-	// записать их в вид..
