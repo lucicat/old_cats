@@ -1,0 +1,22 @@
+{% extends '/templates/app.twig' %}
+
+{% block header %}
+	<link rel="stylesheet" href="/design/css/fullcat/app.css">
+	<title>{{ cat.name }}</title>
+{% endblock %}
+
+{% block h1 %}
+	{{ cat.name }}
+{% endblock %}
+
+{% block content %}
+	{% include '/fullcat/about-cat.twig' %}
+	{% include '/fullcat/stories.twig' %}
+	{% include '/fullcat/my-addres.twig' %}
+	{% include '/fullcat/cats-nearly-me.twig' %}
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

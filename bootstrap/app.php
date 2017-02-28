@@ -64,10 +64,18 @@
 
 	$container['CatsController'] = function ($container) {
 		return new App\Controllers\CatsController($container);
+	};		
+
+	$container['NewsController'] = function ($container) {
+		return new App\Controllers\NewsController($container);
 	};	
 
 	$container['ProfileController'] = function ($container) {
 		return new App\Controllers\Profile\ProfileController($container);
+	};	
+
+	$container['ContactsController'] = function ($container) {
+		return new App\Controllers\ContactsController($container);
 	};
 
 	// set HomeController 

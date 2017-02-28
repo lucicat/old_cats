@@ -9,14 +9,14 @@
 				</div>
 			</article>
 			<div class="paginator__article__story">
-				<a href="{{ current-1 }}" class="prev">
-					{% if left == true %}
+				<a href="{{ prevStory }}" class="prev">
+					{% if prevStory == true %}
 						предыдущая
 					{% endif %}
 				</a>
-				<a href="{{ current+1 }}" class="next">
-					{% if right == true %}
-						следуюащая
+				<a href="{{ nextStory }}" class="next">
+					{% if nextStory == true %}
+						следующая
 					{% endif %}
 				</a>
 			</div>

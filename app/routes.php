@@ -32,9 +32,10 @@
 
 
 
-    $app->get('/cats', function () {
-        echo 'some test';
-        die();
-    })->add(new \App\Middleware\PaginationMiddleware($container));
+    $app->get('/cats', 'CatsController:showCats')->add(new \App\Middleware\PaginationMiddleware($container));
+    $app->get('/news', 'NewsController:showNews')->add(new \App\Middleware\PaginationMiddleware($container));
+    $app->get('/contacts', 'ContactsController:showContacts')->setName('contacts');
+    $app->post('/contacts', 'ContactsController:sendMessage')->setName('contacts');
+
 
  ?>

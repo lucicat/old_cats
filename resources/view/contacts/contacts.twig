@@ -1,0 +1,31 @@
+{% extends '/templates/app.twig' %}
+
+{% block header %}
+	<link rel="stylesheet" href="/design/css/contacts/app.css">
+	<title>Контакты</title>
+{% endblock %}
+
+{% block h1 %}
+	Наши контакты!)
+{% endblock %}
+
+{% block content %}
+    <div class="number-phone">8-999-999-9999</div>
+    <div class="email-addres">kitten@kitten.ru</div>
+    <div class="maps-coord">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=G2zICHv8hIVTirAIhJ2ua_DIuXQpU-5O&amp;width=100%25&amp;height=456&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+    </div>
+    <h1>Напиши нам:</h1>
+    <form action="" method="post">
+        <label for="your_email">Твоя почта:</label>
+        <input type="email" size="20" name="your_email">
+        <label for="your_message">Твое сообщение:</label>
+        <textarea name="your_message" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="Отправить сообщение">
+    </form>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
