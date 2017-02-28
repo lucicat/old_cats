@@ -24,6 +24,15 @@ class StoriesController extends Controller
         return $story ? $story : false;
     }
 
+    /**
+     * show or no add fields
+     * @param  int $cat from get 
+     * @return bool      
+     */
+    protected function checkForAuth($cat)
+    {
+        return (int)$_SESSION['user'] == (int)$cat;
+    }
 
     /**
     * get view environment for subsequent binding

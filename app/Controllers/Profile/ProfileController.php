@@ -17,6 +17,7 @@ class ProfileController extends SController
         // bind data in view
         $this->environment->addGlobal('cat', $this->auth->user()->first());
         $this->environment->addGlobal('story', $this->story);
+        $this->environment->addGlobal('mainProfile', true);
         $this->urlPaginationStory();
         
         // return view
@@ -38,6 +39,7 @@ class ProfileController extends SController
             $this->getCatStory($idcats);
             $this->environment->addGlobal('cat', $user->first());
             $this->environment->addGlobal('story', $this->story);
+            $this->environment->addGlobal('mainProfile', $this->checkForAuth($idcats));
             $this->urlPaginationStory();
             return $this->view->render($response, 'fullcat/fullcat.twig');
         } else {

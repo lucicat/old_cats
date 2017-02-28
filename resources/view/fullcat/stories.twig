@@ -22,6 +22,7 @@
 			</div>
 			<!-- end story -->
 			{# check, if user is login and it is his page, than show this..else no #}
+			{% if mainProfile != false %}
 			<div class="add-new-story">
 				<h2>Новая история</h2>
 				<form action="" class="form-new-story">
@@ -32,6 +33,7 @@
 					<input type="submit" class="add_button" value="добавить историю" name="add_story">
 				</form>
 			</div>
+			{% endif %}
 			<!-- end add new story	 -->
 		</div>
 		<!-- end stories -->
