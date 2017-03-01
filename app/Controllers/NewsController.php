@@ -24,7 +24,10 @@ class NewsController extends Controller
         return $this->view->render($response, 'news/news.twig');
 
     }
-
+    /**
+     * counting all news for view pagination
+     * @return [type] [description]
+     */
     public function countNews()
     {
         $count = NewsModel::select('*')
@@ -36,6 +39,11 @@ class NewsController extends Controller
 
     public function showFullNews($request, $response, $args)
     {
-        return; 
+        $id_news  = $args['id_news'];
+        $new_item = NewsModel::where('idnews', $id_news)
+                             ->first();
+        $item = $new_item ? $new_item : 0;
+        $this->view->getEnvironment()->addGlobal('item', $item);
+        return $this->view->render($response, 'news/fullnews.twig'); 
     }
 }
