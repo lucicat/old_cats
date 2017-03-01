@@ -61,6 +61,15 @@
     }
 
     /**
+     * set count elements on one page
+     * @param [type] $count [description]
+     */
+    public function setCountPerPage($count)
+    {
+        $this->countPerPage = $count;
+        return $this;
+    }
+    /**
      * count the pages which we have from sql query
      * @return [type] [description]
      */
