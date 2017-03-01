@@ -4,6 +4,8 @@ namespace App\Controllers\Profile;
 use App\Controllers\Controller;
 use App\Models\StoriesModel;
 use App\Controllers\Pagination; 
+use Respect\Validation\Validator as v;
+
 /**
 * 
 */
@@ -32,6 +34,33 @@ class StoriesController extends Controller
     protected function checkForAuth($cat)
     {
         return (int)$_SESSION['user'] == (int)$cat;
+    }
+
+    /**
+     * add cat's story 
+     * validation 
+     * set in db 
+     * @param [Request] $request  [description]
+     * @param [Response] $response [description]
+     */
+    public function addStory($request, $response)
+    {
+        $validation = $this->validator->validate($request, [
+            'title'     => v::notEmpty(),
+            'content'   => v::notEmpty()
+        ]);
+
+        if ($validation->failed()) {
+           return $response->withRedirect($this->router->pathFor('profile.show'));
+        }
+
+        $user = StoriesModel::create([
+            'title'         => $request->getParam('title'),
+            'content'       => $request->getParam('content'),
+            'id_cat'        => $_SESSION['user']
+        ]);
+
+        return $response->withRedirect($this->router->pathFor('profile.show'));
     }
 
     /**

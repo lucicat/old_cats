@@ -54,11 +54,11 @@
 		{
 			$validation = $this->validator->validate($request, [
 				'email' 		=> v::noWhitespace()->notEmpty()->email()->emailAvailable(),
-				'namecat' 	=> v::noWhitespace()->notEmpty()->alpha(), 
-				'password' 	=> v::noWhitespace()->notEmpty(),
+				'namecat' 		=> v::noWhitespace()->notEmpty()->alpha(), 
+				'password' 		=> v::noWhitespace()->notEmpty(),
 				'passwordagain' => v::noWhitespace()->notEmpty(),
 				'weight'		=> v::noWhitespace()->notEmpty(),
-				'sex'				=> v::noWhitespace()->notEmpty(),
+				'sex'			=> v::noWhitespace()->notEmpty(),
 				'breed'			=> v::noWhitespace()->notEmpty(),
 				'years'			=> v::noWhitespace()->notEmpty(),
 			]);

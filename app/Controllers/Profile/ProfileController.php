@@ -10,6 +10,7 @@ class ProfileController extends SController
 {
     protected $environment;
 
+
     // this method without login is closed
     public function showProfile($request, $response)
     {
@@ -47,9 +48,14 @@ class ProfileController extends SController
         }
     }
 
+    /**
+     * bind into the view pagination urls 
+     * @return [boolean] [description]
+     */
     public function urlPaginationStory()
     {
         $this->environment->addGlobal('nextStory', $this->pagination->getNextUrl());
         $this->environment->addGlobal('prevStory', $this->pagination->getPrevUrl());
+        return true;
     }
 }

@@ -70,9 +70,17 @@
 		return new App\Controllers\NewsController($container);
 	};	
 
+	
+	//////////////////////
+	/// profile controllers 
 	$container['ProfileController'] = function ($container) {
 		return new App\Controllers\Profile\ProfileController($container);
 	};	
+
+	$container['StoriesController'] = function ($container) {
+		return new App\Controllers\Profile\StoriesController($container);
+	};
+	///////////////////////////////////////////////////////////
 
 	$container['ContactsController'] = function ($container) {
 		return new App\Controllers\ContactsController($container);

@@ -25,11 +25,11 @@
 			{% if mainProfile != false %}
 			<div class="add-new-story">
 				<h2>Новая история</h2>
-				<form action="" class="form-new-story">
-					<label for="theme_story">Тема истории:</label>
-					<input type="text" name="theme_story">
-					<label for="text_story">Текст истории:</label>
-					<textarea name="text_story" id="" cols="30" rows="10"></textarea>
+				<form action="{{ path_for('add.story') }}" method="post" class="form-new-story">
+					<label for="title">Тема истории:</label>
+					<input type="text" name="title">
+					<label for="content">Текст истории:</label>
+					<textarea name="content" id="" cols="30" rows="10"></textarea>
 					<input type="submit" class="add_button" value="добавить историю" name="add_story">
 				</form>
 			</div>
