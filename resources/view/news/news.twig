@@ -22,12 +22,13 @@
     </article>
     {% endfor %}
     <div class="pagination">
-        <a href="" class="pagination-item">1</a>
-        <a href="" class="pagination-item">2</a>
-        <a href="" class="pagination-item">3</a>
-        <a href="" class="pagination-item">4</a>
-        <a href="" class="pagination-item">5</a>
-        <a href="" class="pagination-item">6</a>
+        {% for item in 1..countPage %}
+            {% if item == currentPage %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" style="background:#666;" class="pagination-item">{{ item }}</a>
+            {% else %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" class="pagination-item">{{ item }}</a>
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}
 

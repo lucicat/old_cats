@@ -98,13 +98,18 @@
         return true;
     }
 
+    public function getCurrentPage()
+    {
+        return $this->currentPage;
+    }
+
     /**
      * get count the elements which we need to skip 
      * @return [int] count skip element
      */
     public function getSkip()
     {
-        return $this->currentPage == 1 ? 0 : $this->currentPage * $this->countPerPage - 1;
+        return $this->currentPage == 1 ? 0 : ($this->currentPage - 1) * $this->countPerPage;
     }
 
     /**

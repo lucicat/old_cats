@@ -17,9 +17,20 @@ class NewsController extends Controller
                          ->take($take)
                          ->get();
         $news = $news ? $news : false;
+        $this->countNews();
         $this->environment->addGlobal('news', $news);
+        $this->environment->addGlobal('currentPage', $this->pagination->getCurrentPage());
+        $this->environment->addGlobal('countPage', $this->pagination->getCountPage());
         return $this->view->render($response, 'news/news.twig');
 
+    }
+
+    public function countNews()
+    {
+        $count = NewsModel::select('*')
+                          ->count();
+        $this->pagination->setCountElements($count);
+        return $count;
     }
 
 
