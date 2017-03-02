@@ -54,13 +54,12 @@
 
     ///////////////////
     /// discussion route
-    $app->get('/discussion', 'DiscussionController:showThemes')
-        ->setName('themes');
+    $app->get('/discussion', 'DiscussionController:getThemes')
+        ->setName('themes')
+        ->add(new \App\Middleware\PaginationMiddleware($container));
 
-    $app->get('/discussion/{theme}', 'DiscussionController:Theme')
-        ->setName('theme');
-
-    $app->post('/discussion/{theme}', 'DiscussionController:addTheme');
+    $app->post('/discussion', 'DiscussionController:addTheme')
+        ->add(new \App\Middleware\GuestMiddleware($container));
     //////////////////////
     
 

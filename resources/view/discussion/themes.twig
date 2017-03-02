@@ -1,0 +1,65 @@
+{% extends '/templates/app.twig' %}
+
+{% block header %}
+	<link rel="stylesheet" href="/design/css/themes/app.css">
+    <link rel="stylesheet" href="/design/bower_components/jquery-ui/themes/sunny/jquery-ui.min.css">
+    <title>Чаты котиков</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/cats">Чаты котиков</a>
+{% endblock %}
+{% block h1 %}
+    Чаты котиков
+{% endblock %}
+
+{% block content %}
+
+    {% for theme in themes %}
+    <article class="cat-news">
+        <div class="right-part__cat-news">
+            <div class="date-news">{{ theme.created_at }}</div>
+            <div class="title-news"> {{ theme.title }}</div>
+            <div class="content-news">{{ theme.description }}</div>
+            <a href="" class="go-to-fullnews">подробнее</a>
+        </div>
+    </article>
+    {% endfor %}
+    
+    {# paginate #}
+    {% if countPage == 1 %}
+    <div class="pagination">
+        {% for item in 1..countPage %}
+            {% if item == currentPage %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" style="background:#666;" class="pagination-item">{{ item }}</a>
+            {% else %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" class="pagination-item">{{ item }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+        Ничего не нашлось:( 
+    {% endif %}
+
+    {# add the chats  #}
+    {% if checkAuth %}
+        <form action="{{ path_for('themes') }}" method="post">
+            <label for="title">Введите название чата:</label>
+            <br>
+            <input type="text" name="title" value="" placeholder="Все черные котэ сюда" required>
+            <br>
+            <label for="description">Краткое описание вашего чата:</label>
+            <br>
+            <textarea name="description" cols="30" rows="10"></textarea>
+            <br>
+            <input type="submit" value="добавить чатик">
+        </form>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/design/bower_components/jquery/dist/jquery.min.js" defer></script>
+{% endblock %}
+
