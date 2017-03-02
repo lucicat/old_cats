@@ -1,23 +1,24 @@
     <div class="search-cat">
-        <div class="filter">
+        <form method="get" action="" class="filter">
             <fieldset calss="name-a-sex">
                 <div class="wrap-name">
                     <label for="name">Имя:</label>
-                    <input type="text" class="name" name="name" placeholder="name">
+                    <input type="text" class="name" name="name" placeholder="name" value="{{ oldqueries.name }}">
                 </div>
                 <div class="wrap-sex">
                     <label for="sex">Пол:</label>
-                    <input name="sex" type="radio" value="cat">Кот
-                    <input name="sex" type="radio" value="catty">Кошечка
+                    <input name="sex" type="radio" {{ oldqueries.sex == 1 ? "checked='checked'"}} value="1">Кот
+                    <input name="sex" type="radio" {{ oldqueries.sex == 0 ? "checked='checked'"}} value="0">Кошечка
                 </div>
             </fieldset>
 
             <fieldset class="age-and-weight">
+                Возраст:
                 <div class="wrap-age">
                     <label for="from_age">От:</label>
-                    <input type="text" size="5" name="from_age" placeholder="от" id="from_age">
+                    <input type="text" size="5" value="{{ oldqueries.from_age }}" name="from_age" placeholder="от" id="from_age">
                     <label for="to_age">До:</label>
-                    <input type="text" size="5" name="to_age" placeholder="до">лет
+                    <input type="text" size="5" name="to_age" value="{{ oldqueries.to_age }}" placeholder="до">лет
                 </div>
 
                 <div class="weight-cat">
@@ -28,15 +29,21 @@
 
             <fieldset class="breed-fieldset">
                 <div class="wrap-breed">
-                    <label for="breed-cat">Порода</label>
-                    <select name="breed-cat" id="" class="breed-cat">
-                        <option value="samar">Самарские</option>
-                        <option value="siam">Сиамские</option>
-                    </select>
+                    {% if breeds %}
+                        <label for="breed">Порода</label>
+                        <select name="breed" id="" class="breed-cat">
+                            {% for breed in breeds %}
+                                <option value="{{ breed.idbreed }}" {{ oldqueries.breed == breed.idbreed ? 'selected' }}>
+                                    {{ breed.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    {% endif %}
                 </div>
-
+                <input type="hidden" id="weight_from" name="weight_from" value="{{ oldqueries.weight_from }}">
+                <input type="hidden" id="weight_to" name="weight_to" value="{{ oldqueries.weight_to }}">
                 <input type="submit" class="button-search-cat" value="Искать котика">
             </fieldset>
 
-        </div>
+        </form>
     </div>

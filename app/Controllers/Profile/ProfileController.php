@@ -3,6 +3,7 @@
 namespace App\Controllers\Profile;
 use App\Controllers\Profile\StoriesController as SController;
 use App\Models\UserModel;
+use App\Models\BreedModel;
 /**
 * 
 */
@@ -10,12 +11,20 @@ class ProfileController extends SController
 {
     protected $environment;
 
+    public function getBreeds()
+    {
+        $breeds = BreedModel::get();
+        $breeds = $breeds ? $breeds : false;
+        $this->environment->addGlobal('breeds', $breeds);
+    }
 
     // this method without login is closed
     public function showProfile($request, $response)
     {
         $this->getCatStory();
+        $this->getBreeds();
         // bind data in view
+        
         $this->environment->addGlobal('cat', $this->auth->user()->first());
         $this->environment->addGlobal('story', $this->story);
         $this->environment->addGlobal('mainProfile', true);
@@ -38,6 +47,7 @@ class ProfileController extends SController
         $user = UserModel::where('idcats', $idcats);
         if ($user->count() != 0) {
             $this->getCatStory($idcats);
+            $this->getBreeds();
             $this->environment->addGlobal('cat', $user->first());
             $this->environment->addGlobal('story', $this->story);
             $this->environment->addGlobal('mainProfile', $this->checkForAuth($idcats));

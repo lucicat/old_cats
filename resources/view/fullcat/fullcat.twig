@@ -5,6 +5,10 @@
 	<title>{{ cat.name }}</title>
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/cats">Котики</a>
+    <a href="{{ base_url() }}/profile/{{ cat.id }}">{{ cat.name }}</a>
+{% endblock %}
 {% block h1 %}
 	{{ cat.name }}
 {% endblock %}

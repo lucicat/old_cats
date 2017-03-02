@@ -35,7 +35,9 @@
 
     $app->get('/cats', 'CatsController:showCats')
         ->add(new \App\Middleware\PaginationMiddleware($container));
-    
+    $app->get('/cats/search', 'CatsController:searchCats')
+        ->setName('search.cats')
+        ->add(new \App\Middleware\PaginationMiddleware($container));
 
     ///////////////
     // news routes

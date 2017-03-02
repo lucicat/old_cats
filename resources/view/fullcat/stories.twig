@@ -1,40 +1,40 @@
-		{% if story %}
-		<div class="stories">
-			<h2>Мои интересные истории:</h2>
-			<article class="story">
-				<div class="title__story">{{ story.title }}</div>
-				<div class="date__story">{{ story.created_at }}</div>
-				<div class="content__story">
-					{{ story.content }}
-				</div>
-			</article>
-			<div class="paginator__article__story">
-				<a href="{{ prevStory }}" class="prev">
-					{% if prevStory == true %}
-						предыдущая
-					{% endif %}
-				</a>
-				<a href="{{ nextStory }}" class="next">
-					{% if nextStory == true %}
-						следующая
-					{% endif %}
-				</a>
-			</div>
-			<!-- end story -->
-			{# check, if user is login and it is his page, than show this..else no #}
-			{% if mainProfile != false %}
-			<div class="add-new-story">
-				<h2>Новая история</h2>
-				<form action="{{ path_for('add.story') }}" method="post" class="form-new-story">
-					<label for="title">Тема истории:</label>
-					<input type="text" name="title">
-					<label for="content">Текст истории:</label>
-					<textarea name="content" id="" cols="30" rows="10"></textarea>
-					<input type="submit" class="add_button" value="добавить историю" name="add_story">
-				</form>
-			</div>
-			{% endif %}
-			<!-- end add new story	 -->
-		</div>
-		<!-- end stories -->
-		{% endif %}
+{% if story %}
+    <div class="stories">
+        <h2>Мои интересные истории:</h2>
+        <article class="story">
+            <div class="title__story">{{ story.title }}</div>
+            <div class="date__story">{{ story.created_at }}</div>
+            <div class="content__story">
+                {{ story.content }}
+            </div>
+        </article>
+        <div class="paginator__article__story">
+            <a href="{{ prevStory }}" class="prev">
+                {% if prevStory == true %}
+                    предыдущая
+                {% endif %}
+            </a>
+            <a href="{{ nextStory }}" class="next">
+                {% if nextStory == true %}
+                    следующая
+                {% endif %}
+            </a>
+        </div>
+        <!-- end story -->
+    {% endif %}
+    {# check, if user is login and it is his page, than show this..else no #}
+    {% if mainProfile != false %}
+        <div class="add-new-story">
+            <h2>Новая история</h2>
+            <form action="{{ path_for('add.story') }}" method="post" class="form-new-story">
+                <label for="title">Тема истории:</label>
+                <input type="text" name="title">
+                <label for="content">Текст истории:</label>
+                <textarea name="content" id="" cols="30" rows="10"></textarea>
+                <input type="submit" class="add_button" value="добавить историю" name="add_story">
+            </form>
+        </div>
+    {% endif %}
+    <!-- end add new story   -->
+</div>
+<!-- end stories -->

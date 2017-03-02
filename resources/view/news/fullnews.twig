@@ -4,7 +4,11 @@
 	<link rel="stylesheet" href="/design/css/fullnews/app.css">
 	<title>{{ item.title }}</title>
 {% endblock %}
-
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/news">Новости</a>
+    <a  href="{{ base_url() }}/news/{{ item.idnews }}" 
+        style="max-width:300px; overflow:hidden;">{{ item.title }}</a>
+{% endblock %}
 {% block h1 %}
 	{{ item.title }}
 {% endblock %}

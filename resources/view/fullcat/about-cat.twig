@@ -4,24 +4,26 @@
 			<div class="right-info">
 				<div class="years-old">
 					<div>Сколько лет:</div>
-					<div>{{ cat.years }}</div>
+					<div>{{ cat.years }} год(лет)</div>
 				</div>
 				<div class="breed-cat">
-					<div>Порода</div>
-					<div>{{ cat.breed }}</div>
+					<div>Порода:</div>
+					<div>{{ breeds[cat.breed - 1].name }}</div>
 				</div>
 				<div class="sex-cat">
 					<div>Пол:</div>
-					<div>{{ cat.sex }}</div>
+					<div>{{ cat.sex == 1 ? 'Кот' : 'Кошечка' }}</div>
 				</div>
 				<div class="weight-cat">
-					<div>Вес</div>
-					<div>{{ cat.weight }}</div>
+					<div>Вес:</div>
+					<div>{{ cat.weight }} кг</div>
 				</div>
+				{% if cat.aboutme %}
 				<div class="about-cat__right-info">
 					<h2>О себе:</h2>
 					<p>{{ cat.aboutme }}</p>
 				</div>
+				{% endif %}
 				<!-- end about cat info -->
 			</div>
 			<!-- end right info -->

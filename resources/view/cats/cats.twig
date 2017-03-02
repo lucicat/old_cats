@@ -2,9 +2,13 @@
 
 {% block header %}
 	<link rel="stylesheet" href="/design/css/cats/app.css">
-	<title>Поиск котиков</title>
+    <link rel="stylesheet" href="/design/bower_components/jquery-ui/themes/sunny/jquery-ui.min.css">
+    <title>Поиск котиков</title>
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/cats">Поиск котиков</a>
+{% endblock %}
 {% block h1 %}
 	Поиск котиков
 {% endblock %}
@@ -12,17 +16,26 @@
 {% block content %}
     {% include '/cats/searchfilter.twig' %}
     {% include '/cats/listcats.twig' %}
+
+    {% if countPage == 1 %}
     <div class="pagination">
-        <a href="" class="pagination-item">1</a>
-        <a href="" class="pagination-item">2</a>
-        <a href="" class="pagination-item">3</a>
-        <a href="" class="pagination-item">4</a>
-        <a href="" class="pagination-item">5</a>
-        <a href="" class="pagination-item">6</a>
+        {% for item in 1..countPage %}
+            {% if item == currentPage %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" style="background:#666;" class="pagination-item">{{ item }}</a>
+            {% else %}
+                <a href="{{ path_for('show.news') }}?page={{ item }}" class="pagination-item">{{ item }}</a>
+            {% endif %}
+        {% endfor %}
     </div>
+    {% else %}
+        Ничего не нашлось:( 
+        Получится в следующий раз :)
+    {% endif %}
 {% endblock %}
 
 {% block script %}
-
+    <script src="/design/bower_components/jquery/dist/jquery.min.js" defer></script>
+    <script src="/design/bower_components/jquery-ui/jquery-ui.js"  defer></script>
+    <script src="/design/js/js.js" defer></script>
 {% endblock %}
 

@@ -49,9 +49,8 @@
 		</ul>
 	</nav>
 	<div class="breadcrumbs">
-		<a href="">link1</a>
-		<a href="">link2</a>
-		<a href="">link3</a>
+		<a href="{{ base_url() }}">Главная</a>
+		{% block breadcrumbs %}{% endblock %}
 	</div>
 	<main class="main-content">
 		<h1>{% block h1 %}{% endblock %}</h1>

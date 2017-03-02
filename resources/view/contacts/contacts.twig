@@ -4,7 +4,9 @@
 	<link rel="stylesheet" href="/design/css/contacts/app.css">
 	<title>Контакты</title>
 {% endblock %}
-
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/contacts">Контакты</a>
+{% endblock %}
 {% block h1 %}
 	Наши контакты!)
 {% endblock %}
