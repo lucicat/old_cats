@@ -60,7 +60,8 @@
                 'email'         => v::noWhitespace()->notEmpty()->email()->emailAvailable(),
                 'namecat'       => v::noWhitespace()->notEmpty()->alpha(), 
                 'password'      => v::noWhitespace()->notEmpty(),
-                'passwordagain' => v::noWhitespace()->notEmpty()->equals($request->getParam('password')),
+                'passwordagain' => v::noWhitespace()->notEmpty()
+                                    ->equals($request->getParam('password')),
                 'weight'        => v::noWhitespace()->notEmpty()->numeric(),
                 'sex'           => v::noWhitespace()->notEmpty()->intVal(),
                 'breed'         => v::noWhitespace()->notEmpty()->intVal(),

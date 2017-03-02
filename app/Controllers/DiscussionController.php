@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use Respect\Validation\Validator as v;
 use App\Models\BreedModel;
 use App\Models\DiscussionModel;
 use App\Pagination\Pagination;
@@ -55,7 +56,22 @@ class DiscussionController extends Controller
      */
     public function addTheme($request, $response)
     {
+        $validation = $this->validator->validate($request, [
+            'title'         => v::noWhitespace()->notEmpty(),
+            'description'   => v::noWhitespace()->notEmpty(),
+        ]);
+        if ($validation->failed()) {
+            return $response->withRedirect($this->router->pathFor('themes'));
+        }
 
+        DiscussionModel::create([
+            'title'         => $request->getParam('title'),
+            'description'   => $request->getParam('description'),
+            'creater'       => $_SESSION['user'],
+        ]);
+
+
+        return $response->withRedirect($this->router->pathFor('themes'));
     }
 
 

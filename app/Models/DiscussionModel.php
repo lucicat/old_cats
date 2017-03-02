@@ -32,7 +32,6 @@ class DiscussionModel extends Model
         protected $fillable = [
             'title',
             'creater',
-            'count_cats',
             'description'
         ];
 }
