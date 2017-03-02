@@ -19,6 +19,7 @@
             );
 
             if (!$auth) {
+                $_SESSION['errors']['nouser'] = 'такого пользователя нет(';
                 return $response->withRedirect($this->router->pathFor('auth.signup'));
             }
             

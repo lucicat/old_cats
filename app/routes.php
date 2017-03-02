@@ -64,6 +64,18 @@
     
 
 
+    ///////////////////
+    /// message route
+    $app->get('/discussion/{theme}', 'MessageController:getMessages')
+        ->setName('messages');
+
+    $app->get('/discussion/{theme}/refresh/{timestamp}', 'MessageController:refreshData');
+
+    $app->get('/discussion/{theme}/addmessage/{timestamp}', 'MessageController:addMessage')
+        ->add(new \App\Middleware\GuestMiddleware($container));
+    //////////////////////
+
+
     ////////////////////////
     /// contacts 
     $app->get('/contacts', 'ContactsController:showContacts')->setName('contacts');

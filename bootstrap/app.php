@@ -97,9 +97,9 @@
         return new App\Controllers\DiscussionController($container);
     };
 
-    // $container['MessagesController'] = function ($container) {
-    //     return new App\Controllers\MessagesController($container);
-    // };
+    $container['MessageController'] = function ($container) {
+        return new App\Controllers\MessageController($container);
+    };
 
 
 

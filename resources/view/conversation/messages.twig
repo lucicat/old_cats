@@ -1,0 +1,59 @@
+{% extends '/templates/app.twig' %}
+
+{% block header %}
+	<link rel="stylesheet" href="/design/css/themes/app.css">
+    <link rel="stylesheet" href="/design/bower_components/jquery-ui/themes/sunny/jquery-ui.min.css">
+    <title>Чаты котиков</title>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{{ base_url() }}/discussion">Чаты котиков</a>
+    <a href="{{ base_url() }}/discussion/{{ theme }}">{{ discussion.title }} </a>
+{% endblock %}
+{% block h1 %}
+    Чаты котиков
+{% endblock %}
+
+{% block content %}
+    
+
+    <hr>
+    <div id="wrapmessages" style="max-height:700px;overflow:scroll;">
+        {% if messages != false %}
+            {% for message in messages %}
+            <article style="border-bottom:2px solid gray;" class="cat-message">
+                <div class="right-part__cat-message">
+                    <div class="date-message">{{message.created_at|date('H:i:s') }}</div>
+                    <a href="{{ message.idcats }}" class="creator-message">{{ message.name }}</a>
+                    <div class="content-message">{{ message.content }}</div>
+                </div>
+            </article>
+            {% endfor %}
+        {% else %}
+            тут сообщений пока неть(
+            будьте первыми, кто оставит их тут ;)
+        {% endif %}
+    </div>
+
+    {# add the chats  #}
+    {% if checkAuth %}
+            <label for="description">Ваше сообщение:</label>
+            <br>
+            <textarea id="content" name="description" cols="30" rows="10"></textarea>
+            <br>
+            <button id='send_message'>отправить</button>
+        </form>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="/design/bower_components/jquery/dist/jquery.min.js" defer></script>
+    <script src="/design/js/messages.js" defer></script>
+    <script>
+        let latest_timestamp = {{ time }};
+        let id_theme = {{ theme }}
+    </script>
+{% endblock %}
+

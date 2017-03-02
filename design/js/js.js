@@ -1,5 +1,6 @@
 "use strict";
-$( document ).ready(() => {
+$( document ).ready(function() {
+
 	let DomSlider = $('.polzunok');
 	
 	// initialize slider

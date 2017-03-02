@@ -26,8 +26,11 @@
 			{% else %}
 				<div class="login-form"> 
 					<a href="#" class="login">войти</a>
-					<form action="{{ path_for('auth.signin')}}" method="post">
+					<form action="{{ path_for('auth.signin')}}" id="login_form" method="post" style="display:none;">
 						<a href="#" class="close-login-form"></a>
+						{% if errors.nouser %}
+                			<div style="border:1px solid red; color: red;">{{ errors.nouser }}</div>
+            			{% endif %}
 						<input type="email" name="email" placeholder="kittty@mail.kitty">
 						<input type="password" name="password" placeholder="*****">
 						<input type="submit" value="войти" name="go">
@@ -67,6 +70,8 @@
 			<div class="tel"><a href="tel:8-999-999-9999"> 8-999-999-9999</a></div>
 		</div>
 	</footer>
+    <script src="/design/bower_components/jquery/dist/jquery.min.js" defer></script>
 	{% block script %}{% endblock %}
+	<script src="/design/js/login.js" defer></script>
 </body>
 </html>

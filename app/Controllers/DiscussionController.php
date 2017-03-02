@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 use Respect\Validation\Validator as v;
-use App\Models\BreedModel;
 use App\Models\DiscussionModel;
 use App\Pagination\Pagination;
+use App\Models\CountCatsInChatModel;
 
 /**
 *   show a themes 
@@ -32,8 +32,11 @@ class DiscussionController extends Controller
 
         $themes = DiscussionModel::skip($skip)
                                  ->take($take)
+                                 ->join('cats', 'cats.idcats', '=', 'discussions.creater')
+                                 ->select('discussions.*', 'cats.name', 'cats.idcats')
                                  ->get();
         $count_themes = $themes->count();
+
 
         $this->pagination->setCountElements($count_themes);
         $this->environment->addGlobal('all_themes', $count_themes);
@@ -60,16 +63,23 @@ class DiscussionController extends Controller
             'title'         => v::noWhitespace()->notEmpty(),
             'description'   => v::noWhitespace()->notEmpty(),
         ]);
+
         if ($validation->failed()) {
             return $response->withRedirect($this->router->pathFor('themes'));
         }
 
-        DiscussionModel::create([
+
+        $theme = DiscussionModel::create([
             'title'         => $request->getParam('title'),
             'description'   => $request->getParam('description'),
             'creater'       => $_SESSION['user'],
         ]);
+        $last_id = $theme->id;
 
+        CountCatsInChatModel::create([
+            'id_cat'    => $_SESSION['user'],
+            'id_theme'  => $last_id,
+        ]);
 
         return $response->withRedirect($this->router->pathFor('themes'));
     }

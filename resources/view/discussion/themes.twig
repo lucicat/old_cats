@@ -17,11 +17,12 @@
 
     {% for theme in themes %}
     <article class="cat-news">
-        <div class="right-part__cat-news">
-            <div class="date-news">{{ theme.created_at }}</div>
-            <div class="title-news"> {{ theme.title }}</div>
-            <div class="content-news">{{ theme.description }}</div>
-            <a href="" class="go-to-fullnews">подробнее</a>
+        <div class="right-part__cat-news" style="border-bottom:1px solid #666;">
+            <div class="date-news"> <em>Создана:</em>{{ theme.created_at }}</div>
+            <div class="date-news"> <em>Создатель:</em><a href="{{ base_url()}}/profile/{{ theme.idcats }}">{{ theme.name }}</a></div>
+            <div class="title-news"> <em>Тема:</em> {{ theme.title }}</div>
+            <div class="content-news"> <em>Краткое описание:</em>{{ theme.description }}</div>
+            <a href="{{ base_url() }}/discussion/{{ theme.iddiscussions }}" class="go-to-fullnews">войти в чат</a>
         </div>
     </article>
     {% endfor %}
