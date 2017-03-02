@@ -1,15 +1,17 @@
 <?php
     $app->get('/', 'HomeController:sayHello')->setName('home');
     
-    //auth routes
+    ////////////////////////
+    // auth routes
     $app->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
     $app->post('/auth/signup', 'AuthController:postSignUp');
     $app->get('/auth/signout', 'AuthController:getSignOut')->setName('auth.signout');
     $app->post('/auth/signin', 'AuthController:postSignIn')->setName('auth.signin');
+    //////////////////////
+    
 
     /////////////////////
     //profile routes
-    //
     $app->get('/profile', 'ProfileController:showProfile')
         ->setName('profile.show')
         ->add(new \App\Middleware\PaginationMiddleware($container))
@@ -27,18 +29,20 @@
     //      ->setName('cat.add.story');
     
     $app->post('/profile/{cat}/{story}/addstory', 'ProfileController:postAddStory');
-
-    // end profile routes
     /////////////////////////
 
 
-
+    //////////////////////
+    /// cats routes 
     $app->get('/cats', 'CatsController:showCats')
         ->add(new \App\Middleware\PaginationMiddleware($container));
     $app->get('/cats/search', 'CatsController:searchCats')
         ->setName('search.cats')
         ->add(new \App\Middleware\PaginationMiddleware($container));
+    //////////////////////
+    
 
+    
     ///////////////
     // news routes
     $app->get('/news', 'NewsController:showNews')
@@ -46,9 +50,25 @@
         ->add(new \App\Middleware\PaginationMiddleware($container));
     $app->get('/news/{id_news}', 'NewsController:showFullNews');
     ///////////////////
-    ///
+    
+
+    ///////////////////
+    /// discussion route
+    $app->get('/discussion', 'DiscussionController:showThemes')
+        ->setName('themes');
+
+    $app->get('/discussion/{theme}', 'DiscussionController:Theme')
+        ->setName('theme');
+
+    $app->post('/discussion/{theme}', 'DiscussionController:addTheme');
+    //////////////////////
+    
+
+
+    ////////////////////////
+    /// contacts 
     $app->get('/contacts', 'ContactsController:showContacts')->setName('contacts');
     $app->post('/contacts', 'ContactsController:sendMessage')->setName('contacts');
-
+    /////////////////////////
 
  ?>
